@@ -7,6 +7,7 @@ import com.tify.back.auth.jwt.JwtProperties;
 import com.tify.back.auth.jwt.refreshToken.RefreshToken;
 import com.tify.back.auth.jwt.refreshToken.RefreshTokenRepository;
 import com.tify.back.auth.jwt.service.JwtProviderService;
+import com.tify.back.dto.users.SearchedUserDto;
 import com.tify.back.dto.users.UserProfileDto;
 import com.tify.back.dto.users.UserUpdateDto;
 import com.tify.back.dto.users.request.EmailAuthRequestDto;
@@ -14,12 +15,17 @@ import com.tify.back.dto.users.request.JoinRequestDto;
 import com.tify.back.dto.users.request.LoginRequestDto;
 import com.tify.back.dto.users.response.JoinResponseDto;
 import com.tify.back.dto.users.response.LoginResponseDto;
+import com.tify.back.model.friend.Friend;
 import com.tify.back.model.users.EmailAuth;
 import com.tify.back.model.users.User;
+import com.tify.back.repository.friend.FriendRepository;
 import com.tify.back.repository.users.EmailAuthCustomRepository;
 import com.tify.back.repository.users.EmailAuthRepository;
 import com.tify.back.repository.users.UserRepository;
+import com.tify.back.service.friend.FriendService;
+import java.util.ArrayList;
 import java.util.List;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -39,11 +45,13 @@ import java.util.UUID;
 @Transactional(readOnly = true)
 public class UserService {
 
+    private final FriendService friendService;
     private final EmailService emailService;
     private final JwtProviderService jwtProviderService; //얘 추가하고 오류
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
+    private final FriendRepository friendRepository;
     private final EmailAuthCustomRepository emailCustomRepository;
     private final EmailAuthRepository emailRepository;
     private final RefreshTokenRepository refreshTokenRepository;
@@ -309,9 +317,26 @@ public class UserService {
     }
 
 
-    public List<User> searchUserByNickname(String nickname) {
-        return userRepository.findByNicknameLike(nickname);
+    public List<SearchedUserDto> searchUserByNickname(String nickname, Long myId) {
+        List<User> users = userRepository.findByNicknameLike(nickname);
+        List<SearchedUserDto> searchedUsers = new ArrayList<>();
+        if (searchedUsers != null) {
+            for (User user : users) {
+                //SearchedUserDto searchedUser = new SearchedUserDto();
+                //Long id = userRepository.findByEmail(myId)
+                Friend friend = friendService.getFriendshipStatus(myId, user.getId());
+                SearchedUserDto searchedUser = SearchedUserDto.builder()
+                    .id(user.getId())
+                    .profileImg(user.getProfileImg())
+                    .nickname(user.getNickname())
+                    .email(user.getEmail())
+                    .state(friend.getStatus())
+                    .build();
+
+                searchedUsers.add(searchedUser);
+            }
+        }
+
+        return searchedUsers;
     }
-
-
 }
