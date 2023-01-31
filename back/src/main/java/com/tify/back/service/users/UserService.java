@@ -16,6 +16,7 @@ import com.tify.back.dto.users.request.LoginRequestDto;
 import com.tify.back.dto.users.response.JoinResponseDto;
 import com.tify.back.dto.users.response.LoginResponseDto;
 import com.tify.back.model.friend.Friend;
+import com.tify.back.model.friend.FriendStatus;
 import com.tify.back.model.users.EmailAuth;
 import com.tify.back.model.users.User;
 import com.tify.back.repository.friend.FriendRepository;
@@ -324,13 +325,13 @@ public class UserService {
             for (User user : users) {
                 //SearchedUserDto searchedUser = new SearchedUserDto();
                 //Long id = userRepository.findByEmail(myId)
-                Friend friend = friendService.getFriendshipStatus(myId, user.getId());
+                FriendStatus friendStatus = friendService.getFriendshipStatus(myId, user.getId());
                 SearchedUserDto searchedUser = SearchedUserDto.builder()
                     .id(user.getId())
                     .profileImg(user.getProfileImg())
                     .nickname(user.getNickname())
                     .email(user.getEmail())
-                    .state(friend.getStatus())
+                    .state(friendStatus)
                     .build();
 
                 searchedUsers.add(searchedUser);

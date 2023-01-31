@@ -1,4 +1,6 @@
 package com.tify.back.controller.users;
+import static java.lang.Long.parseLong;
+
 import com.tify.back.dto.users.SearchedUserDto;
 import com.tify.back.model.users.User;
 import com.tify.back.service.users.UserService;
@@ -20,7 +22,7 @@ public class UserController {
 	@GetMapping("/searchuser/{nickname}")
 	public List<SearchedUserDto> searchUserByNickname(@PathVariable String nickname, @RequestHeader("Authorization") String token) {
 		String myId = userService.getUserid(token);
-		List<SearchedUserDto> users = userService.searchUserByNickname(nickname,myId);
+		List<SearchedUserDto> users = userService.searchUserByNickname(nickname,parseLong(myId));
 
 		return users;
 	}

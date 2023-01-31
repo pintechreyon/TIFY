@@ -1,5 +1,6 @@
 package com.tify.back.dto.users;
 
+import com.tify.back.model.friend.FriendStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,5 +20,5 @@ public class SearchedUserDto {
 	private String profileImg;
 	private String nickname;
 	private String email;
-	private String state;
+	private FriendStatus state;
 }
