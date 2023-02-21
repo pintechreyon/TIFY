@@ -132,7 +132,7 @@ public class UserApiController {
 
     /**
      * 회원가입 - 이메일 인증
-     */
+     
     @Operation(summary = "comfirm email", description = "이메일 인증 완료")
     @GetMapping("/account/confirmEmail/{email}")
     public ResponseEntity<String> confirmEmail(@PathVariable(value = "email") String email, HttpServletResponse response) throws URISyntaxException { //json으로 전달이 안됨
@@ -160,7 +160,7 @@ public class UserApiController {
 
     /**
      * 이메일 인증 했는지 체크
-     */
+     
     @Operation(summary = "comfirm email", description = "이메일 체크")
     @GetMapping("/account/checkEmailState")
     public ResponseEntity<?> checkEmailState(String email) {
@@ -177,7 +177,7 @@ public class UserApiController {
 
     /**
      * 회원가입 - 이메일 인증 요청
-     */
+     
     @Operation(summary = "send email auth", description = "이메일 인증 진행")
     @GetMapping("/account/sendEmailAuth")
     public ResponseEntity<?> sendEmailAuth(@RequestParam("email") String email) {
@@ -188,7 +188,7 @@ public class UserApiController {
         userService.sendEmailAuth(email);
         return ResponseEntity.ok().body(email); //인증된 이메일 리턴
     }
-
+*/
     /**
      * 회원 조회
      */
