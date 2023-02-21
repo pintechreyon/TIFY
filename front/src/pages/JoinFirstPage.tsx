@@ -103,8 +103,8 @@ export function JoinFirstPage() {
               <img src={checkIcon} className="checkIcon" />
             </div>
           </div>
-          <div className="emailBox">
-            /*<p className="m-1">이메일</p>
+          {/* <div className="emailBox">
+            <p className="m-1">이메일</p>
             {doRequest ? (
               <form className="emailForm" onSubmit={GoNext}>
                 <input
@@ -141,8 +141,8 @@ export function JoinFirstPage() {
                   이메일 인증 요청
                 </button>
               </form>
-            )}*/
-          </div>
+            )}
+          </div> */}
         </div>
       </div>
     </div>
