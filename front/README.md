@@ -9,6 +9,8 @@
 
 ## Main Page
 <iframe src="https://www.veed.io/embed/5f41da19-226e-446d-bb98-3b81e182a468" width="744" height="504" frameborder="0" title="msedge_YmgBCuoEYk" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+[![Watch the video]()](https://www.veed.io/embed/5f41da19-226e-446d-bb98-3b81e182a468)
+[![asciicast](https://asciinema.org/a/113463.png)](https://www.veed.io/embed/5f41da19-226e-446d-bb98-3b81e182a468)
 
 ## Make Wish
 <iframe src="https://www.veed.io/embed/5f41da19-226e-446d-bb98-3b81e182a468" width="744" height="504" frameborder="0" title="msedge_YmgBCuoEYk" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
