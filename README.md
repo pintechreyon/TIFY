@@ -108,12 +108,10 @@ _- 마음을 모아 티피에서 축하를 의미있게 -_
 - AWS 서버 구축
 - NginX 리버스 프록시 설정
 - HTTPS 설정<br/>
-  👉[HTTPS 설정 기록](https://sunakang.notion.site/HTTP-HTTPS-redirect-2e0ca2c7c5c44cd082efc0dd8e2b91df)
 
 **CI/CD**<br/>
 
 - GitLab Jenkins Docker 연동하여 CI/CD구축<br/>
-  👉[배포 & CI/CD 기록](https://sunakang.notion.site/CI-CD-Gitlab-Docker-Jenkins-f5687a54bd0c49c8b36f489194316484)<br/>
 
 **백엔드**
 
